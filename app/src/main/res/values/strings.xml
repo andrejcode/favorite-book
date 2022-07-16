@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Favorite Book</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="logout">Log Out</string>
+    <string name="create_account">Create account</string>
+    <string name="new_user">New user?</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="unable_to_login">Unable to Log In. Please try again</string>
+    <string name="unable_to_create_account">Unable to create account. Please try again</string>
+    <string name="enter_valid_email_and_password">Please enter valid email and password that is at least 6 characters long.</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
+
+    <string name="favorite_books">Favorite books</string>
 </resources>

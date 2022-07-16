@@ -37,7 +37,13 @@ fun BookApp() {
 fun BookNavHost(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Auth.name) {
         composable(Auth.name) {
-            AuthScreen()
+            AuthScreen {
+                navController.navigate(Home.name) {
+                    popUpTo(Auth.name) {
+                        inclusive = true
+                    }
+                }
+            }
         }
         composable(Home.name) {
             HomeScreen()
