@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andrejmilanovic.favoritebook.data.remote.Result
 import com.andrejmilanovic.favoritebook.data.remote.Result.*
 import com.andrejmilanovic.favoritebook.data.remote.response.BookItem
 import com.andrejmilanovic.favoritebook.data.repository.BookRepository
