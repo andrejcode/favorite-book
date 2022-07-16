@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andrejmilanovic.favoritebook.data.remote.Result.Error
-import com.andrejmilanovic.favoritebook.data.remote.Result.Success
+import com.andrejmilanovic.favoritebook.data.remote.Result
+import com.andrejmilanovic.favoritebook.data.remote.Result.*
 import com.andrejmilanovic.favoritebook.data.remote.response.BookItem
 import com.andrejmilanovic.favoritebook.data.repository.BookRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,6 +34,9 @@ class SearchViewModel @Inject constructor(private val repository: BookRepository
                 is Error -> {
                     // TODO display error message
                     isLoading = false
+                }
+                is Loading -> {
+                    isLoading = true
                 }
             }
         }

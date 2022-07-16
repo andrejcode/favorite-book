@@ -22,4 +22,12 @@
     <string name="search">Search</string>
     <string name="arrow_back">Arrow back</string>
     <string name="book_cover">Book cover</string>
+    <string name="book_details">Book details</string>
+    <string name="unable_to_get_book_info">Unable to get information about the book</string>
+    <string name="author">Author:</string>
+    <string name="authors">Authors:</string>
+    <string name="published_date">Published date: %s</string>
+    <string name="categories">Categories: %s</string>
+    <string name="page_count">Page count: %d</string>
+    <string name="save">Save</string>
 </resources>

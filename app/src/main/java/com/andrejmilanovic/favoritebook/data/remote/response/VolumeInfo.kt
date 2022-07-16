@@ -11,11 +11,11 @@ data class VolumeInfo(
     @SerializedName("canonicalVolumeLink")
     val canonicalVolumeLink: String,
     @SerializedName("categories")
-    val categories: List<String>,
+    val categories: List<String>?,
     @SerializedName("contentVersion")
     val contentVersion: String,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("imageLinks")
     val imageLinks: ImageLinks?,
     @SerializedName("industryIdentifiers")
@@ -35,7 +35,7 @@ data class VolumeInfo(
     @SerializedName("printType")
     val printType: String,
     @SerializedName("publishedDate")
-    val publishedDate: String,
+    val publishedDate: String?,
     @SerializedName("publisher")
     val publisher: String,
     @SerializedName("readingModes")
