@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.andrejmilanovic.favoritebook.R
+import com.andrejmilanovic.favoritebook.data.model.Book
 import com.andrejmilanovic.favoritebook.data.remote.Result
 import com.andrejmilanovic.favoritebook.data.remote.Result.Loading
 import com.andrejmilanovic.favoritebook.data.remote.response.BookItem
@@ -54,7 +55,11 @@ fun DetailsScreen(
             }.value
 
             when (bookInfo) {
-                is Result.Success -> BookDetails(bookInfo = bookInfo, navController = navController)
+                is Result.Success -> BookDetails(
+                    bookInfo = bookInfo,
+                    navController = navController,
+                    viewModel
+                )
                 is Result.Error -> {
                     Column(
                         verticalArrangement = Arrangement.Center,
@@ -77,7 +82,11 @@ fun DetailsScreen(
 }
 
 @Composable
-fun BookDetails(bookInfo: Result<BookItem>, navController: NavController) {
+fun BookDetails(
+    bookInfo: Result<BookItem>,
+    navController: NavController,
+    viewModel: DetailsViewModel
+) {
     if (bookInfo is Result.Success) {
         val book = bookInfo.data.volumeInfo
         val googleBookId = bookInfo.data.id
@@ -162,9 +171,17 @@ fun BookDetails(bookInfo: Result<BookItem>, navController: NavController) {
                     }
                 }
             }
+            // Save book to local database
             Button(
                 onClick = {
-                    // TODO Save book
+                    viewModel.saveBook(
+                        Book(
+                            id = googleBookId,
+                            title = book.title,
+                            authors = if (!book.authors.isNullOrEmpty()) book.authors.toString() else null,
+                            image = if (!book.imageLinks?.thumbnail.isNullOrEmpty()) book.imageLinks?.thumbnail else null
+                        )
+                    )
                     navController.popBackStack()
                 },
                 modifier = Modifier
