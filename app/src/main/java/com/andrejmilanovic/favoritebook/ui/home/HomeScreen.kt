@@ -10,10 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Logout
-import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -99,7 +96,9 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                         Spacer(modifier = Modifier.height(12.dp))
                         LazyColumn {
                             items(items = savedBooks) { book ->
-                                BookCard(book = book, onClick = {})
+                                BookCard(book, viewModel) { bookId ->
+                                    navController.navigate(BookScreen.Details.name + "/$bookId")
+                                }
                             }
                         }
                     }
@@ -110,7 +109,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
 }
 
 @Composable
-fun BookCard(book: Book, onClick: (Book) -> Unit) {
+fun BookCard(book: Book, viewModel: HomeViewModel, navigateToDetails: (String) -> Unit) {
+    var openDialog by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier.padding(8.dp),
         shape = RoundedCornerShape(20.dp),
@@ -137,7 +137,8 @@ fun BookCard(book: Book, onClick: (Book) -> Unit) {
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
-                IconButton(onClick = { onClick.invoke(book) }) {
+                // Open alert dialog when favorite icon is clicked
+                IconButton(onClick = { openDialog = true }) {
                     Icon(
                         imageVector = Icons.Default.Favorite,
                         contentDescription = stringResource(id = R.string.favorite),
@@ -145,6 +146,32 @@ fun BookCard(book: Book, onClick: (Book) -> Unit) {
                             .padding(16.dp)
                             .size(50.dp)
                     )
+                }
+
+                // AlertDialog will ask user to confirm deletion of book
+                if (openDialog) {
+                    AlertDialog(
+                        onDismissRequest = { openDialog = false },
+                        title = { Text(text = stringResource(R.string.delete_book)) },
+                        text = { Text(text = stringResource(id = R.string.are_you_sure_you_want_to_delete_book)) },
+                        buttons = {
+                            Row(
+                                modifier = Modifier
+                                    .padding(8.dp)
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.End
+                            ) {
+                                TextButton(onClick = {
+                                    openDialog = false
+                                    viewModel.deleteBook(book)
+                                }) {
+                                    Text(text = stringResource(id = R.string.yes))
+                                }
+                                TextButton(onClick = { openDialog = false }) {
+                                    Text(text = stringResource(id = R.string.no))
+                                }
+                            }
+                        })
                 }
             }
             Text(
@@ -172,7 +199,7 @@ fun BookCard(book: Book, onClick: (Book) -> Unit) {
             Row {
                 Spacer(modifier = Modifier.weight(1f))
                 RoundedButton(label = stringResource(id = R.string.details)) {
-
+                    navigateToDetails(book.id)
                 }
             }
         }
