@@ -5,11 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.andrejmilanovic.favoritebook.BookScreen.*
 import com.andrejmilanovic.favoritebook.ui.auth.AuthScreen
+import com.andrejmilanovic.favoritebook.ui.details.DetailsScreen
 import com.andrejmilanovic.favoritebook.ui.home.HomeScreen
 import com.andrejmilanovic.favoritebook.ui.search.SearchScreen
 import com.andrejmilanovic.favoritebook.ui.theme.FavoriteBookTheme
@@ -49,7 +52,14 @@ fun BookNavHost(navController: NavHostController) {
             HomeScreen(navController)
         }
         composable(Search.name) {
-            SearchScreen()
+            SearchScreen(navController)
+        }
+        val detailsName = Details.name
+        composable("$detailsName/{bookId}", arguments = listOf(navArgument("bookId") {
+            type = NavType.StringType
+        })) { entry ->
+            val bookId = entry.arguments?.getString("bookId")
+            DetailsScreen(bookId = bookId.toString(), navController = navController)
         }
     }
 }

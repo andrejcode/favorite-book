@@ -18,4 +18,8 @@
     <string name="favorite_books">Favorite books</string>
     <string name="add_book">Add book</string>
     <string name="welcome_user">Welcome, %s</string>
+    <string name="search_books">Search books</string>
+    <string name="search">Search</string>
+    <string name="arrow_back">Arrow back</string>
+    <string name="book_cover">Book cover</string>
 </resources>
