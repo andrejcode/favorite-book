@@ -32,4 +32,8 @@
     <string name="categories">Categories: %s</string>
     <string name="page_count">Page count: %d</string>
     <string name="save">Save</string>
+    <string name="delete_book">Delete book</string>
+    <string name="are_you_sure_you_want_to_delete_book">Are you sure you want to delete the book from favorites?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
