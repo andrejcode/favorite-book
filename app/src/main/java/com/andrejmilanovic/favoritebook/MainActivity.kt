@@ -8,10 +8,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.andrejmilanovic.favoritebook.BookScreen.Auth
-import com.andrejmilanovic.favoritebook.BookScreen.Home
+import com.andrejmilanovic.favoritebook.BookScreen.*
 import com.andrejmilanovic.favoritebook.ui.auth.AuthScreen
 import com.andrejmilanovic.favoritebook.ui.home.HomeScreen
+import com.andrejmilanovic.favoritebook.ui.search.SearchScreen
 import com.andrejmilanovic.favoritebook.ui.theme.FavoriteBookTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,7 +46,10 @@ fun BookNavHost(navController: NavHostController) {
             }
         }
         composable(Home.name) {
-            HomeScreen()
+            HomeScreen(navController)
+        }
+        composable(Search.name) {
+            SearchScreen()
         }
     }
 }
