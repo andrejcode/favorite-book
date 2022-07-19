@@ -66,10 +66,11 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
         ) {
             Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.Top) {
                 val email = FirebaseAuth.getInstance().currentUser?.email
+                val username = email?.split("@")?.get(0)?.replaceFirstChar { it.uppercase() } ?: "N/A"
                 Text(
                     text = stringResource(
                         id = R.string.welcome_user,
-                        email?.split("@")?.get(0) ?: "N/A"
+                        username
                     ),
                     fontSize = 24.sp
                 )
