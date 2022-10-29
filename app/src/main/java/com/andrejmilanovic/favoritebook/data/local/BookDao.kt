@@ -1,7 +1,7 @@
 package com.andrejmilanovic.favoritebook.data.local
 
 import androidx.room.*
-import com.andrejmilanovic.favoritebook.data.model.Book
+import com.andrejmilanovic.favoritebook.domain.model.Book
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.andrejmilanovic.favoritebook.data.local.BookDao
 import com.andrejmilanovic.favoritebook.data.local.BookDatabase
 import com.andrejmilanovic.favoritebook.data.remote.BookApi
-import com.andrejmilanovic.favoritebook.data.repository.BookRepository
+import com.andrejmilanovic.favoritebook.data.repository.BookRepositoryImpl
 import com.andrejmilanovic.favoritebook.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -40,5 +40,5 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideBookRepository(api: BookApi, dao: BookDao) = BookRepository(api, dao)
+    fun provideBookRepository(api: BookApi, dao: BookDao) = BookRepositoryImpl(api, dao)
 }

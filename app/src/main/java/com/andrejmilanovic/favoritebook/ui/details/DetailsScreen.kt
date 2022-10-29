@@ -23,7 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.andrejmilanovic.favoritebook.R
-import com.andrejmilanovic.favoritebook.data.model.Book
+import com.andrejmilanovic.favoritebook.domain.model.Book
 import com.andrejmilanovic.favoritebook.data.remote.Result
 import com.andrejmilanovic.favoritebook.data.remote.Result.Loading
 import com.andrejmilanovic.favoritebook.data.remote.response.BookItem

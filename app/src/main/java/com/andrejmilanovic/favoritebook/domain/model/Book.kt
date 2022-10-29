@@ -1,4 +1,4 @@
-package com.andrejmilanovic.favoritebook.data.model
+package com.andrejmilanovic.favoritebook.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

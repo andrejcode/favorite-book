@@ -24,7 +24,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.andrejmilanovic.favoritebook.BookScreen
 import com.andrejmilanovic.favoritebook.R
-import com.andrejmilanovic.favoritebook.data.model.Book
+import com.andrejmilanovic.favoritebook.domain.model.Book
 import com.andrejmilanovic.favoritebook.ui.component.RoundedButton
 import com.google.firebase.auth.FirebaseAuth
 
