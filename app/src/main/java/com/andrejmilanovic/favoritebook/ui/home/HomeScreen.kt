@@ -36,8 +36,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
         }, actions = {
             IconButton(onClick = {
                 FirebaseAuth.getInstance().signOut().run {
-                    navController.navigate(BookScreen.Auth.name) {
-                        popUpTo(BookScreen.Home.name) {
+                    navController.navigate(BookScreen.Auth.route) {
+                        popUpTo(BookScreen.Home.route) {
                             inclusive = true
                         }
                     }
@@ -51,7 +51,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
         })
     }, floatingActionButton = {
         FloatingActionButton(
-            onClick = { navController.navigate(BookScreen.Search.name) },
+            onClick = { navController.navigate(BookScreen.Search.route) },
             backgroundColor = MaterialTheme.colors.primary
         ) {
             Icon(
@@ -85,7 +85,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                         Text(text = "No books added yet", style = MaterialTheme.typography.body1)
                     }
                 } else {
-                    if (viewModel.loading) {
+                    if (viewModel.isLoading) {
                         Column(
                             modifier = Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
@@ -98,7 +98,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                         LazyColumn {
                             items(items = savedBooks) { book ->
                                 BookCard(book, viewModel) { bookId ->
-                                    navController.navigate(BookScreen.Details.name + "/$bookId")
+                                    navController.navigate(BookScreen.Details.route + "/$bookId")
                                 }
                             }
                         }

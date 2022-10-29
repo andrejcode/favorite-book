@@ -38,24 +38,23 @@ fun BookApp() {
 
 @Composable
 fun BookNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Auth.name) {
-        composable(Auth.name) {
+    NavHost(navController = navController, startDestination = Auth.route) {
+        composable(Auth.route) {
             AuthScreen {
-                navController.navigate(Home.name) {
-                    popUpTo(Auth.name) {
+                navController.navigate(Home.route) {
+                    popUpTo(Auth.route) {
                         inclusive = true
                     }
                 }
             }
         }
-        composable(Home.name) {
+        composable(Home.route) {
             HomeScreen(navController)
         }
-        composable(Search.name) {
+        composable(Search.route) {
             SearchScreen(navController)
         }
-        val detailsName = Details.name
-        composable("$detailsName/{bookId}", arguments = listOf(navArgument("bookId") {
+        composable("${Details.route}/{bookId}", arguments = listOf(navArgument("bookId") {
             type = NavType.StringType
         })) { entry ->
             val bookId = entry.arguments?.getString("bookId")

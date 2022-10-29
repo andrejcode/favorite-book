@@ -117,7 +117,7 @@ fun SearchBookRow(book: BookItem, navController: NavController) {
         shape = RectangleShape,
         elevation = 4.dp,
         onClick = {
-            navController.navigate(Details.name + "/${book.id}")
+            navController.navigate(Details.route + "/${book.id}")
         }) {
         Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.Top) {
             // If there is not book cover image use generic book cover from drawables
