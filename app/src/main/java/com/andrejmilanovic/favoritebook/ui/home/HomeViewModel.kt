@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(private val repository: BookRepositoryIm
     private val _savedBooks = MutableStateFlow<List<Book>>(listOf())
     val savedBooks: StateFlow<List<Book>> = _savedBooks
 
-    var loading by mutableStateOf(false)
+    var isLoading by mutableStateOf(false)
 
     init {
         getSavedBooks()
@@ -26,7 +26,7 @@ class HomeViewModel @Inject constructor(private val repository: BookRepositoryIm
 
     private fun getSavedBooks() {
         try {
-            loading = true
+            isLoading = true
             viewModelScope.launch {
                 repository.getSavedBooks.collect {
                     _savedBooks.value = it
@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(private val repository: BookRepositoryIm
         } catch (e: Exception) {
             // TODO show error message
         } finally {
-            loading = false
+            isLoading = false
         }
     }
 
