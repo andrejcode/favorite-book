@@ -152,7 +152,7 @@ fun BookDetails(
                     HtmlCompat.fromHtml(book.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
                         .toString()
                 val descriptionHeight =
-                    LocalContext.current.resources.displayMetrics.heightPixels.dp.times(0.12f)
+                    LocalContext.current.resources.displayMetrics.heightPixels.dp.times(0.1f)
 
                 Surface(
                     modifier = Modifier
