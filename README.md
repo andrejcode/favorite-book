@@ -43,5 +43,6 @@ Step by step explanation of how to get a dev environment running.
 
 ## Continuous development
 
-The app will implement FirebaseFirestore to store books and all of their details. It will be possible
-to leave reviews and ratings for each book.
+The app will implement FirebaseFirestore to store books and all of their details. It will be
+possible to leave reviews and ratings for each book. Create use case for getting books and move
+logic away from ViewModels.
